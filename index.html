@@ -21,7 +21,8 @@
                 <input type="number" class="form-control" id="kraks-in-table" aria-describedby="kraks-help">
                 <div id="kraks-help" class="form-text">Cuantos más kraks de esos, más petación habrá.</div>
             </div>
-            <button type="button" class="btn btn-primary" onclick="calculateMulticast()">Calcular</button>
+            <button type="button" class="btn btn-primary" onclick="calculateMonocast()">Calcular Monocast</button>
+            <button type="button" class="btn btn-primary" onclick="calculateMulticast()">Calcular Multicast</button>
             </form>
         </div>
         <div class="row">
@@ -80,6 +81,35 @@
             if(v == 0 && t == 0) {
                 showMessage('Vuelta a mano', `El hechizo no se castea y vuelve a la mano`, 'alert-success')
             }
+
+        }
+
+        function calculateMonocast() {
+            let n = document.getElementById("kraks-in-table").value
+            if(n < 1 || n == null) {
+                showNoKraks()
+                return
+            }
+            clearOutputs()
+            let v = 0
+
+            for(let i = 1; i <= n; i++) {
+                v = v + randi(0,1)
+            }
+
+            if(v == n) {
+                v = v + 1
+                showMessage('Cementario', `Se castea <b>${v}</b> veces y el hechizo se va al cementerio`, 'alert-danger')
+            }
+
+            if(v == 0) {
+                showMessage('Vuelta a mano', `El hechizo no se castea y vuelve a la mano`, 'alert-success')
+            }
+
+            if(0 < v && v < n) {
+                showMessage('Vuelta a mano', `El hechizo se castea <b>${v}</b> veces y vuelve a la mano`, 'alert-success')
+            }
+
 
         }
 
