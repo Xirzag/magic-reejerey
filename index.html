@@ -51,7 +51,7 @@
 
             while(n > v){
                 v = 0
-                for(let i = 1; i < n; i++) {
+                for(let i = 1; i <= n; i++) {
                     v = v + randi(0,1)
                     c = c + 1
                 }
@@ -68,7 +68,7 @@
             showMessage('Hechizo', `El hechizo se lanzó desde la mano <b>${b}</b> veces`, 'alert-info')
 
             if(v == n) {
-                v= v + 1
+                v = v + 1
                 t = t + 1
                 showMessage('Cementario', `Se castea <b>${t}</b> veces y el hechizo se va al cementerio`, 'alert-danger')
             }
